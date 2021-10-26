@@ -1,14 +1,38 @@
-{% extends 'base.html' %} {% block content %}
-<div class="row">
-    {% for pub in publication %}
-    <div class="col-md-6 mb-4">
-        <div class="h-100 p-5 bg-light border rounded-3">
-            <p class="card-text"><small class="text-muted">{{ pub.updated_at|date }}</small></p>
-            <h2>{{ pub.title }}</h2>
-            <p>{{ pub.body|truncatewords:50 }}</p>
-            <button class="btn btn-danger" type="button">Ler Tudo</button>
+{% extends 'base.html' %} {% load humanize %}
+<title>{% block title %}Home {% endblock title %} - Nordeste em Notas</title>
+
+{% block content %}
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 m-2 p-2">
+    {% for pub in page_obj %}
+    <div class="col">
+        {% if pub.thumb %}
+        <img src="{{ pub.thumb.url }}" class="card-img-top" alt="thumbnail"> {% endif %}
+        <div class="card-body">
+            <h3 class="text-primary">{{ pub.title|title }}</h3>
+            <p class="card-text">{{ pub.description|truncatewords:45 }}</p>
+            <a class="link-primary"><i class="far fa-clock m-1"></i>{{ pub.updated_at|naturaltime }}</a>
+        </div>
+        <div class="card-body">
+            <a class="link-primary" type="button" href="{{ pub.get_absolute_url }}">Ler Tudo<i class="fas fa-caret-right m-1"></i></a>
         </div>
     </div>
     {% endfor%}
+</div>
+
+<div class="pagination justify-content-end">
+    <span class="step-links">
+        <h4>
+        {% if page_obj.has_previous %}
+            <a class="btn btn-lg btn-outline-dark" href="?page=1"><i class="fas fa-angle-double-left"></i></a>
+            <a class="btn btn-lg btn-outline-dark" href="?page={{ page_obj.previous_page_number }}"><i class="fas fa-chevron-left"></i></a>
+        {% endif %}
+
+        <span class="current">
+            {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}
+        </span> {% if page_obj.has_next %}
+    <a class="btn btn-lg btn-outline-dark" href="?page={{ page_obj.next_page_number }}"><i class="fas fa-chevron-right"></i></a>
+    <a class="btn btn-lg btn-outline-dark" href="?page={{ page_obj.paginator.num_pages }}"><i class="fas fa-angle-double-right"></i></a> {% endif %}
+    </h4>
+    </span>
 </div>
 {% endblock content %}

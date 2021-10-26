@@ -3,33 +3,15 @@
 
 <head>
     {% include 'includes/head.html'%}
-    <title>Olá Mundo!</title>
+    <title>{% block title %}{% endblock title %} - Nordeste em Notas</title>
 </head>
 
 <body>
-    <main>
-        {% include 'includes/navbar.html'%}
-        <div class="container py-4">
-            <div class="my-2 text-center">
-                <h1 class="display-4 fw-bold">Olá, me chamo Wesley.</h1>
-                <div class="col-lg-6 mx-auto">
-                    <p class="lead mb-4">Sou graduando em Sistemas de Informação e desenvolvedor Python. Também tenho conhecimentos em Django, DRF, MySQL, Git, Github, Html/Css/Bootstrap entre outras habilidades...</br>Alguns dos meus hobbies são programar, séries, quadrinhos
-                        e games.
-                    </p>
-
-                    <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
-                        <button type="button" class="btn btn-primary btn-lg"><i class="fab fa-linkedin"></i></button>
-                        <button type="button" class="btn btn-dark btn-lg"><i class="fab fa-github"></i></button>
-                    </div>
-                </div>
-            </div>
-            {% block content %} {% endblock content %}
-        </div>
-        <div class="text-center">
-            {% include 'includes/footer.html'%}
-        </div>
-    </main>
-
+    {% block header %} {% endblock header %} {% include 'includes/navbar.html'%}
+    <div class="container">
+        {% block content %} {% endblock content %}
+    </div>
+    {% include 'includes/footer.html'%}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 

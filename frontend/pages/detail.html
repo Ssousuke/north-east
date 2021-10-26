@@ -1,0 +1,26 @@
+{% extends 'base.html' %} {% load humanize %}
+<title>{% block title %} {{detail.title}} {% endblock title %}</title> {% block content %}
+<section class="card p-2 m-2 text-center">
+    <h1 class="display-5 fw-bold">{{detail.title|title}}</h1>
+    <div class="col-lg-10 mx-auto">
+        <p class="text-center">Publicado: {{detail.created_at|naturaltime}} | Atualizado: {{detail.updated_at|naturaltime}}</br>
+            Autor: {{.user}}
+        </p>
+        {% if detail.thumb %}
+        <img src="{{ detail.thumb.url }}" class="card-img-top" alt="thumbnail"> {% endif %}
+        <p class="lh-1">{{detail.body|safe}}
+        </p>
+        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+            <div class="btn-group me-2" role="group" aria-label="First group">
+                <button type="button" class="btn btn-dark">{{detail.category}}</button>
+            </div>
+        </div>
+        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+            <div class="btn-group me-2" role="group" aria-label="First group">
+                {% for tag in detail.tag.all %}
+                <button type="button" class="btn btn-dark">{{tag}}</button> {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}
