@@ -28,6 +28,10 @@ INSTALLED_APPS = [
 
     # Internal App
     'backend.publication.apps.PublicationConfig',
+    'django.contrib.humanize',
+
+    # External
+    'django_summernote',
 ]
 
 MIDDLEWARE = [
@@ -106,7 +110,15 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR, 'frontend/static']
+
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Summernote
+X_FRAME_OPTIONS = 'SAMEORIGIN'
