@@ -14,7 +14,7 @@ def home_page(request):
     template_name = 'pages/index.html'
 
     publication = Post.objects.all()
-    paginator = Paginator(publication, 6)
+    paginator = Paginator(publication, 16)
 
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
