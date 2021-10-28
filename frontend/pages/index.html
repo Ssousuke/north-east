@@ -10,7 +10,7 @@
         <div class="card-body">
             <h3 class="text-primary">{{ pub.title|title }}</h3>
             <p class="card-text">{{ pub.description|truncatewords:45 }}</p>
-            <a class="link-primary"><i class="far fa-clock m-1"></i>{{ pub.updated_at|naturaltime }}</a>
+            <a class="text-primary"><i class="far fa-clock m-1"></i>{{ pub.updated_at|naturaltime }}</a>
         </div>
         <div class="card-body">
             <a class="link-primary" type="button" href="{{ pub.get_absolute_url }}">Ler Tudo<i class="fas fa-caret-right m-1"></i></a>
@@ -18,7 +18,6 @@
     </div>
     {% endfor%}
 </div>
-
 <div class="pagination justify-content-end">
     <span class="step-links">
         <h4>
@@ -35,4 +34,6 @@
     </h4>
     </span>
 </div>
+
+
 {% endblock content %}
