@@ -1,6 +1,6 @@
 {% extends 'base.html' %} {% load humanize %}
 <title>{% block title %} {{detail.title}} {% endblock title %}</title> {% block content %}
-<section class="card p-2 m-2 text-center">
+<section class="container mx-auto p-2 m-2 text-center">
     <h1 class="display-5 fw-bold">{{detail.title|title}}</h1>
     <div class="col-lg-10 mx-auto">
         <p class="text-center">Publicado: {{detail.created_at|naturaltime}} | Atualizado: {{detail.updated_at|naturaltime}}</br>
@@ -12,13 +12,13 @@
         </p>
         <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
             <div class="btn-group me-2" role="group" aria-label="First group">
-                <button type="button" class="btn btn-dark">{{detail.category}}</button>
+                <a href="{% url 'publication:list_post' detail.category %}" type="button" class="btn btn-danger mb-1">{{detail.category}}</a>
             </div>
         </div>
         <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
             <div class="btn-group me-2" role="group" aria-label="First group">
                 {% for tag in detail.tag.all %}
-                <button type="button" class="btn btn-dark">{{tag}}</button> {% endfor %}
+                <button type="button" class="btn btn-danger">{{tag}}</button> {% endfor %}
             </div>
         </div>
     </div>
