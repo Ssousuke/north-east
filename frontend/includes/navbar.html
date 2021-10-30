@@ -1,27 +1,32 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-dark fixed-top shadow-sm">
+<nav class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm" style="background-color: #ff4d4d;">
     <div class="container">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#NavbarElement" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <a href="{% url 'publication:home'%}" class="nav-link menu-item text-light"><i
+                class="fas fa-dice fa-2x"></i></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#NavbarElement"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
-          </button>
+        </button>
         <div class="collapse navbar-collapse flex-grow-1 text-right" id="NavbarElement">
             <ul class="navbar-nav ms-auto flex-nowrap">
-                <li class="nav-item btn btn-light">
-                    <a href="{% url 'publication:home' %}" class="nav-link menu-item">Home</a>
+                <li class="nav-item btn-sm btn-light">
+                    <a href="{% url 'publication:home'%}" class="nav-link menu-item text-primary"><i
+                            class="far fa-dot-circle"></i> Página Inicial</a>
                 </li>
-                <li class="nav-item btn btn-light">
-                    <a href="#" class="nav-link menu-item text-danger">Séries</a>
+                <li class="nav-item btn-sm btn-light">
+                    <a href="{% url 'publication:category'%}" class="nav-link menu-item text-danger"><i
+                            class="far fa-dot-circle"></i> Tópicos</a>
                 </li>
-                <li class="nav-item btn btn-light">
-                    <a href="#" class="nav-link menu-item text-primary">Games</a>
+                <li class="nav-item btn-sm btn-light">
+                    <a href="#" class="nav-link menu-item text-dark"><i class="far fa-dot-circle"></i> Colunas</a>
                 </li>
-                <li class="nav-item btn btn-light">
-                    <a href="#" class="nav-link menu-item text-success">Cinema</a>
+                <li class="nav-item btn-sm btn-light">
+                    <a href="#" class="nav-link menu-item text-warning"><i class="far fa-dot-circle"></i> Games</a>
                 </li>
-                <li class="nav-item btn btn-light">
-                    <a href="#" class="nav-link menu-item text-info">eSports</a>
+                <li class="nav-item btn-sm btn-light">
+                    <a href="#" class="nav-link menu-item text-success"><i class="far fa-dot-circle"></i> Cinema</a>
                 </li>
-                <li class="nav-item btn btn-light">
-                    <a href="#" class="nav-link menu-item text-secondary">Contato</a>
+                <li class="nav-item btn-sm btn-light">
+                    <a href="#" class="nav-link menu-item text-info"><i class="far fa-dot-circle"></i> eSports</a>
                 </li>
             </ul>
         </div>
