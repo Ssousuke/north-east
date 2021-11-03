@@ -74,7 +74,7 @@ WSGI_APPLICATION = 'onfire.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 db_from_env = dj_database_url.config(conn_max_age=600)
-DATABASES['DATABASE_URL'].update(db_from_env)
+DATABASES['default'].update(db_from_env)
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
