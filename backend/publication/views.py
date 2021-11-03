@@ -1,6 +1,7 @@
 from django.core.paginator import Paginator
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_list_or_404, get_object_or_404, render
 from backend.publication.models import Post, Category
+from django.db.models import Q
 
 
 def home_page(request):
@@ -39,5 +40,22 @@ def post_category(request, category):
     context = {
         'page_obj': page_obj,
     }
-    print(context)
     return render(request, template_name, context)
+
+
+def search(request):
+    template_name = 'pages/search_result.html'
+    if request.method == 'POST':
+        searched = request.POST['searched']
+        result_list = Post.objects.filter(
+            Q(title__contains=searched) |
+            Q(description__contains=searched) |
+            Q(category__category__contains=searched)
+        )
+        context = {
+            'searched': searched,
+            'result_list': result_list,
+        }
+        return render(request, template_name, context)
+    else:
+        return render(request, template_name)

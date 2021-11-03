@@ -7,4 +7,5 @@ urlpatterns = [
     path('noticias/<str:slug>/', views.detail, name='detail'),
     path('categorias/', views.category, name='category'),
     path('categorias/<str:category>/', views.post_category, name='list_post'),
+    path('resultado/postagens/', views.search, name='search')
 ]
