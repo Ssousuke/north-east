@@ -16,7 +16,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['blog-django-portfolio.herokuapp.com', '127.0.0.1:8000']
 
 # Application definition
 
@@ -115,7 +115,6 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR, 'frontend/static']
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'frontend/staticfiles')
-
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
