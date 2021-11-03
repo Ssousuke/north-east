@@ -1,0 +1,19 @@
+{% extends 'base.html'%} {% block content %} {% if searched %}
+<div class="container">
+    <h2 class="pb-2 border-bottom">Resultados de {{searched}}...</h2>
+    {% for result in result_list %}
+    <div class="card m-2">
+        <div class="card-body">
+            <h5 class="card-title">{{result.title}}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{result.category}}</h6>
+            <p class="card-text">{{result.description}}</p>
+            <a href="{{result.get_absolute_url}}" class="card-link">Continuar Lendo</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<h1>
+    Não foi encontrado nenhum resultado!
+</h1>
+{% endif%} {% endblock content %}
