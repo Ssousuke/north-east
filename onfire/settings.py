@@ -1,4 +1,6 @@
 import os.path
+
+import django_heroku
 from pathlib import Path
 from decouple import config
 
@@ -111,7 +113,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR, 'frontend/static']
 
-
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
@@ -122,3 +123,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Summernote
 X_FRAME_OPTIONS = 'SAMEORIGIN'
+
+django_heroku.settings(locals())
