@@ -1,6 +1,5 @@
 {% extends 'base.html'%} {% load humanize %}
-<title> {% block title %}Todas as categorias {% endblock title %} </title> {% block content %}
-{% for cat in category %}
+<title> {% block title %}Todos os tópicos {% endblock title %} </title> {% block content %} {% for cat in category %}
 <section class="container mx-auto m-2">
     <div class="card mb-3">
         <a class="text-decoration-none" href="{% url 'publication:list_post' cat.category %}">
@@ -20,5 +19,4 @@
         </a>
     </div>
 </section>
-{% endfor %}
-{% endblock content %}
+{% endfor %} {% endblock content %}
