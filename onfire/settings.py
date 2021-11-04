@@ -3,7 +3,7 @@ import os.path
 import django_heroku
 from pathlib import Path
 from decouple import config
-import dj_database_url
+from dj_database_url import parse as dburl
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 from django.conf.global_settings import DATABASES
@@ -73,8 +73,11 @@ WSGI_APPLICATION = 'onfire.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-db_from_env = dj_database_url.config(conn_max_age=600)
-DATABASES['DATABASE_URL'].update(db_from_env)
+default_dburl = 'sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3')
+
+DATABASES = {
+    'default': config('DATABASE_URL', default=default_dburl, cast=dburl),
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
