@@ -1,2 +1,2 @@
-echo "web: gunicorn onfire.wsgi --log-file -" > Procfile
+web: gunicorn onfire.wsgi --log-file -
 python manage.py migrate
