@@ -4,6 +4,7 @@ import django_heroku
 from pathlib import Path
 from decouple import config
 from dj_database_url import parse as dburl
+from django.conf.global_settings import DATABASES
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 from django.conf.global_settings import DATABASES
