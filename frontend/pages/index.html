@@ -1,7 +1,7 @@
 {% extends 'base.html' %} {% load humanize %}
 <title>{% block title %}Home {% endblock title %} - Nordeste em Notas</title>
 {% block header %}
-<header class="m-2 p-3 shadow-sm border-bottom mx-auto">
+<header class="p-3 mb-2 shadow-sm border-bottom mx-auto">
     <div class="container">
         <div class="row">
             <div class="col d-none d-sm-block">
@@ -11,7 +11,8 @@
                 <div class="container-fluid">
                     <form class="d-flex" method="post" action="{% url 'publication:search' %}">
                         {% csrf_token %}
-                        <input class="form-control me-2" type="search" placeholder="Procurar..." aria-label="Search" name="searched">
+                        <input class="form-control me-2" type="search" placeholder="Procurar..." aria-label="Search"
+                               name="searched">
                         <button class="btn btn-danger" type="submit"><i class="fas fa-search"></i></button>
                     </form>
                 </div>
@@ -19,22 +20,21 @@
         </div>
     </div>
 </header>{% endblock header %} {% block content %}
-<div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 m-2 p-2">
+<div class="row">
     {% for pub in page_obj %}
-    <div class="col">
-        <a class="text-decoration-none" href="{{ pub.get_absolute_url }}">
-            {% if pub.thumb %}
-            <img src="{{ pub.thumb.url }}" class="card-img-top" alt="thumbnail">
-            {% endif %}
+    <a class="text-decoration-none" href="{{ pub.get_absolute_url }}">
+        <div class="card mb-2">
+            <div class="card-header bg-danger text-light h5">
+                <i class="far fa-dot-circle p-1"></i>{{ pub.title|title }}
+            </div>
             <div class="card-body">
-                <h4 class="text-danger">{{ pub.title|title }}</h4>
-                <p class="card-subtitle mb-2 text-muted">{{pub.category}}</p>
-                <p class="text-dark">{{ pub.description|truncatewords:45 }}</p>
-                <a class="text-primary"><i class="far fa-clock m-1"></i>{{ pub.updated_at|naturaltime }}</a>
-    </div>
+                <h5 class="text-dark">{{ pub.description|truncatewords:45 }}</h5>
+                <p class="text-muted"><i class="far fa-clock p-1"></i>{{ pub.updated_at|naturaltime }}</p>
+                <p class="text-muted"><i class="fas fa-tag p-1"></i>{{pub.category}}</p>
+            </div>
+        </div>
     </a>
-</div>
-{% endfor%}
+    {% endfor%}
 </div>
 <div class="pagination justify-content-end">
     <span class="step-links">
@@ -44,7 +44,6 @@
             <a class="btn btn-lg btn-outline-dark" href="?page={{ page_obj.previous_page_number }}"><i
                     class="fas fa-chevron-left"></i></a>
         {% endif %}
-
         <span class="current">
             {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}
         </span> {% if page_obj.has_next %}

@@ -1,19 +1,30 @@
-{% extends 'base.html'%} {% block content %} {% if searched %}
+{% extends 'base.html'%} {% load humanize %}
+<title>
+    {% block title %}{{searched}}{% endblock title %}
+</title>
+{% block content %}
 <div class="container">
-    <h2 class="pb-2 border-bottom">Resultados de {{searched}}...</h2>
+    <h2 class="pb-2 border-bottom">Resultados para: {{searched}}...</h2>
     {% for result in result_list %}
-    <div class="card m-2">
-        <div class="card-body">
-            <h5 class="card-title">{{result.title}}</h5>
-            <h6 class="card-subtitle mb-2 text-muted">{{result.category}}</h6>
-            <p class="card-text">{{result.description}}</p>
-            <a href="{{result.get_absolute_url}}" class="card-link">Continuar Lendo</a>
+    <a class="text-decoration-none" href="{{ result.get_absolute_url }}">
+        <div class="card mb-2">
+            <div class="card-header bg-dark text-light h5">
+                <i class="far fa-dot-circle p-1"></i>{{ result.title|title }}
+            </div>
+            <div class="card-body">
+                <h5 class="text-dark">{{ result.description|truncatewords:45 }}</h5>
+                <p class="text-muted"><i class="far fa-clock p-1"></i>{{ result.updated_at|naturaltime }}</p>
+                <p class="text-muted"><i class="fas fa-tag p-1"></i>{{result.category}}</p>
+            </div>
         </div>
+    </a>
+    {% empty %}
+    <div class="alert alert-danger" role="alert">
+        <h4 class="alert-heading">Olá, Forasteiro!</h4>
+        <p>Parece que não temos nada relacionado a sua pesquisa. Mas temos muita coisa bacana na página inicial!</p>
+        <hr>
+        <a href="{% url 'publication:home'%}" class="text-dark">>> Volte para página incial</a>
     </div>
     {% endfor %}
 </div>
-{% else %}
-<h1>
-    Não foi encontrado nenhum resultado!
-</h1>
-{% endif%} {% endblock content %}
+{% endblock content %}

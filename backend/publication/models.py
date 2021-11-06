@@ -19,7 +19,6 @@ class Base(models.Model):
 
 class Category(Base):
     category = models.CharField(max_length=80, verbose_name='Categoria')
-    thumb = models.ImageField(upload_to='category/thumb')
     description = models.CharField(max_length=255, verbose_name='Descrição')
     slug = AutoSlugField(populate_from='category', unique=True, editable=False)
 
@@ -46,14 +45,14 @@ class Tag(Base):
 
 class Post(Base):
     title = models.CharField(max_length=100, verbose_name='Título')
-    description = models.CharField(max_length=330, blank=True, verbose_name='Descrição')
+    description = models.CharField(
+        max_length=330, blank=True, verbose_name='Descrição')
     body = models.TextField(verbose_name='Matéria')
     category = models.ForeignKey(Category, on_delete=models.DO_NOTHING, max_length=20, verbose_name='Categoria',
                                  help_text='Selecione a categoria que mais se aproxima do assunto.')
     tag = models.ManyToManyField(Tag, max_length=20, verbose_name='Tag',
                                  help_text='Selecione algumas palavras chaves que façam referência ao assunto.')
     slug = AutoSlugField(populate_from='title', unique=True, editable=False)
-    thumb = models.ImageField(upload_to='post/thumb', blank=True, verbose_name='Thumbnail')
 
     def get_absolute_url(self):
         return reverse('publication:detail', kwargs={'slug': self.slug})
