@@ -1,25 +1,6 @@
 {% extends 'base.html' %} {% load humanize %}
 <title>{% block title %}Home {% endblock title %} - Nordeste em Notas</title>
-{% block header %}
-<header class="p-3 mb-2 shadow-sm border-bottom mx-auto">
-    <div class="container">
-        <div class="row">
-            <div class="col d-none d-sm-block">
-
-            </div>
-            <div class="col">
-                <div class="container-fluid">
-                    <form class="d-flex" method="post" action="{% url 'publication:search' %}">
-                        {% csrf_token %}
-                        <input class="form-control me-2" type="search" placeholder="Procurar..." aria-label="Search"
-                               name="searched">
-                        <button class="btn btn-danger" type="submit"><i class="fas fa-search"></i></button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</header>{% endblock header %} {% block content %}
+{% block content %}
 <div class="row">
     {% for pub in page_obj %}
     <a class="text-decoration-none" href="{{ pub.get_absolute_url }}">

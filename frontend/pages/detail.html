@@ -3,8 +3,8 @@
 <section class="container mx-auto p-2 m-2 text-center">
     <h1 class="display-5 fw-bold">{{detail.title|title}}</h1>
     <div class="col-lg-10 mx-auto">
-        <p class="text-center">Publicado: {{detail.created_at|naturaltime}} | Atualizado:
-            {{detail.updated_at|naturaltime}}</br>
+        <p class="text-center">Publicado: {{detail.created_at|naturaltime}} | Atualizado: {{detail.updated_at|naturaltime}}
+            </br>
             Autor: {{.user}}
         </p>
         <p class="lh-1">{{detail.body|safe}}
@@ -17,8 +17,7 @@
         <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
             <div class="btn-group me-2" role="group" aria-label="First group">
                 {% for tag in detail.tag.all %}
-                <button type="button" class="btn btn-danger">{{tag}}</button>
-                {% endfor %}
+                <button type="button" class="btn btn-danger">{{tag}}</button> {% endfor %}
             </div>
         </div>
     </div>

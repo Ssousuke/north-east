@@ -1,32 +1,24 @@
 <nav class="navbar navbar-expand-lg  bg-danger navbar-light fixed-top shadow-sm">
     <div class="container">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#NavbarElement"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#NavbarElement" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse flex-grow-1 text-right" id="NavbarElement">
-            <ul class="navbar-nav ms-auto flex-nowrap">
+        <div class="collapse navbar-collapse" id="NavbarElement">
+            <ul class="navbar-nav me-auto mb-2 mb-xl-0">
                 <li class="nav-item btn-sm btn-light">
                     <a href="{% url 'publication:home'%}" class="nav-link menu-item text-primary"><i
-                            class="far fa-dot-circle"></i> Página Inicial</a>
+                            class="far fa-dot-circle"></i> Início</a>
                 </li>
                 <li class="nav-item btn-sm btn-light">
                     <a href="{% url 'publication:category'%}" class="nav-link menu-item text-danger"><i
                             class="far fa-dot-circle"></i> Categorias</a>
                 </li>
-                <li class="nav-item btn-sm btn-light">
-                    <a href="#" class="nav-link menu-item text-dark"><i class="far fa-dot-circle"></i> Colunas</a>
-                </li>
-                <li class="nav-item btn-sm btn-light">
-                    <a href="#" class="nav-link menu-item text-warning"><i class="far fa-dot-circle"></i> Games</a>
-                </li>
-                <li class="nav-item btn-sm btn-light">
-                    <a href="#" class="nav-link menu-item text-success"><i class="far fa-dot-circle"></i> Cinema</a>
-                </li>
-                <li class="nav-item btn-sm btn-light">
-                    <a href="#" class="nav-link menu-item text-info"><i class="far fa-dot-circle"></i> eSports</a>
-                </li>
             </ul>
+            <form class="d-flex" method="post" action="{% url 'publication:search' %}">
+                {% csrf_token %}
+                <input class="form-control me-2" type="search" placeholder="Procurar..." aria-label="Search" name="searched">
+                <button class="btn btn-light" type="submit"><i class="fas fa-search"></i></button>
+            </form>
         </div>
     </div>
 </nav>
