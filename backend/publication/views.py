@@ -7,7 +7,7 @@ from django.db.models import Q
 def home_page(request):
     template_name = 'pages/index.html'
     publication = Post.objects.all()
-    paginator = Paginator(publication, 16)
+    paginator = Paginator(publication, 6)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     context = {
