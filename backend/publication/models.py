@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from django.contrib.auth.models import User
 from django_extensions.db.fields import AutoSlugField
 
 
@@ -53,6 +54,7 @@ class Post(Base):
     tag = models.ManyToManyField(Tag, max_length=20, verbose_name='Tag',
                                  help_text='Selecione algumas palavras chaves que façam referência ao assunto.')
     slug = AutoSlugField(populate_from='title', unique=True, editable=False)
+    author = models.ForeignKey(User, on_delete=models.DO_NOTHING, verbose_name='Autor')
 
     def get_absolute_url(self):
         return reverse('publication:detail', kwargs={'slug': self.slug})
