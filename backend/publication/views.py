@@ -6,7 +6,7 @@ from django.db.models import Q
 
 def home_page(request):
     template_name = 'pages/index.html'
-    publication = Post.objects.all()
+    publication = get_list_or_404(Post, publish=True)
     paginator = Paginator(publication, 6)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
@@ -36,7 +36,10 @@ def category(request):
 
 def post_category(request, category):
     template_name = 'pages/index.html'
-    page_obj = Post.objects.filter(category__category__iexact=category)
+    list_post = Post.objects.filter(category__category__iexact=category)
+    paginator = Paginator(list_post, 6)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
     context = {
         'page_obj': page_obj,
     }
