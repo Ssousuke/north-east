@@ -5,9 +5,10 @@ from backend.publication.models import Post, Category, Tag
 
 @admin.register(Post)
 class PostAdmin(SummernoteModelAdmin):
-    list_display = ('title', 'created_at', 'updated_at',)
+    list_display = ('title', 'created_at', 'updated_at', 'publish',)
     list_display_links = ('title', 'created_at', 'updated_at',)
     list_filter = ('title', 'created_at', 'updated_at',)
+    list_editable = ('publish',)
 
 
 @admin.register(Category)
