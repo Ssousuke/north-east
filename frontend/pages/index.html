@@ -1,12 +1,12 @@
 {% extends 'base.html' %} {% load humanize %}
-<title>{% block title %}Home {% endblock title %} - Nordeste em Notas</title>
+<title>{% block title %} Home {% endblock title %} - Nordeste em Notas</title>
 {% block content %}
 <div class="row">
     {% for pub in page_obj %}
     <a class="text-decoration-none" href="{{ pub.get_absolute_url }}">
         <div class="card mb-2">
             <div class="card-header bg-danger text-light h5">
-                <i class="far fa-dot-circle p-1"></i>{{ pub.title|title }}
+                <i class="far fa-dot-circle p-1"></i>{{ pub.title|capfirst }}
             </div>
             <div class="card-body">
                 <h5 class="text-dark">{{ pub.description|truncatewords:45 }}</h5>
@@ -21,16 +21,16 @@
     <span class="step-links">
         <h4>
         {% if page_obj.has_previous %}
-            <a class="btn btn-lg btn-outline-dark" href="?page=1"><i class="fas fa-angle-double-left"></i></a>
-            <a class="btn btn-lg btn-outline-dark" href="?page={{ page_obj.previous_page_number }}"><i
+            <a class="btn btn-lg btn-outline-danger" href="?page=1"><i class="fas fa-angle-double-left"></i></a>
+            <a class="btn btn-lg btn-outline-danger" href="?page={{ page_obj.previous_page_number }}"><i
                     class="fas fa-chevron-left"></i></a>
         {% endif %}
         <span class="current">
             {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}
         </span> {% if page_obj.has_next %}
-    <a class="btn btn-lg btn-outline-dark" href="?page={{ page_obj.next_page_number }}"><i
+    <a class="btn btn-lg btn-outline-danger" href="?page={{ page_obj.next_page_number }}"><i
             class="fas fa-chevron-right"></i></a>
-    <a class="btn btn-lg btn-outline-dark" href="?page={{ page_obj.paginator.num_pages }}"><i
+    <a class="btn btn-lg btn-outline-danger" href="?page={{ page_obj.paginator.num_pages }}"><i
             class="fas fa-angle-double-right"></i></a> {% endif %}
     </h4>
     </span>

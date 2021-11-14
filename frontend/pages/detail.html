@@ -1,7 +1,7 @@
 {% extends 'base.html' %} {% load humanize %}
 <title>{% block title %} {{detail.title}} {% endblock title %}</title> {% block content %}
 <section class="container mx-auto p-2 m-2 text-center">
-    <h1 class="display-5 fw-bold">{{detail.title|title}}</h1>
+    <h1 class="display-5 fw-bold">{{detail.title|capfirst }}</h1>
     <div class="col-lg-10 mx-auto">
         <p class="text-center">Publicado: {{detail.created_at|naturaltime}} | Atualizado: {{detail.updated_at|naturaltime}}
             </br>

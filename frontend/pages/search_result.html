@@ -9,7 +9,7 @@
     <a class="text-decoration-none" href="{{ result.get_absolute_url }}">
         <div class="card mb-2">
             <div class="card-header bg-dark text-light h5">
-                <i class="far fa-dot-circle p-1"></i>{{ result.title|title }}
+                <i class="far fa-dot-circle p-1"></i>{{ result.title|capfirst }}
             </div>
             <div class="card-body">
                 <h5 class="text-dark">{{ result.description|truncatewords:45 }}</h5>

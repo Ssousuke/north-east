@@ -4,7 +4,7 @@
     <a class="text-decoration-none" href="{% url 'publication:list_post' cat.category %}">
         <div class="row g-0">
             <div class="card-header bg-warning h5">
-                <h5 class="text-dark"><i class="fas fa-tag p-1"></i>{{cat.category}}</h5>
+                <h5 class="text-dark"><i class="fas fa-tag p-1"></i>{{cat.category|capfirst }}</h5>
             </div>
             <div class="card-body">
                 <p class="text-dark">{{cat.description}}</p>
