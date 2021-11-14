@@ -48,9 +48,9 @@ def search(request):
     if request.method == 'POST':
         searched = request.POST['searched']
         result_list = Post.objects.filter(
-            Q(title__iexact=searched) |
-            Q(description__iexact=searched) |
-            Q(category__category__iexact=searched)
+            Q(title__icontains=searched) |
+            Q(description__icontains=searched) |
+            Q(category__category__icontains=searched)
         )
         context = {
             'searched': searched,
