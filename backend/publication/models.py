@@ -55,6 +55,7 @@ class Post(Base):
                                  help_text='Selecione algumas palavras chaves que façam referência ao assunto.')
     slug = AutoSlugField(populate_from='title', unique=True, editable=False)
     author = models.ForeignKey(User, on_delete=models.DO_NOTHING, verbose_name='Autor')
+    publish = models.BooleanField(default=False, verbose_name='Publicar?')
 
     def get_absolute_url(self):
         return reverse('publication:detail', kwargs={'slug': self.slug})
