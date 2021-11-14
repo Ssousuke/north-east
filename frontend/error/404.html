@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+<title>{% block title%}404{% endblock title %}</title>
+{% block content %}
+<div class="px-4 pt-5 my-5 text-center border-bottom">
+    <h1 class="display-1 fw-bold">404</h1>
+    <div class="col-lg-6 mx-auto">
+        <p class="lead">Parece que essa página não existe ou não pode ser acessada no momento.
+            Verifique se sua busca está correta ou tente novamente mais tarde. </p>
+        <p class="lead mb-4">
+            Enquanto isso pode temos novas publicações na página inicial.
+        </p>
+    </div>
+</div>
+{% endblock content %}

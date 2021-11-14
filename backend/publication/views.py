@@ -59,3 +59,7 @@ def search(request):
         return render(request, template_name, context)
     else:
         return render(request, template_name)
+
+
+def error_404(request, exception):
+    return render(request, 'error/404.html')

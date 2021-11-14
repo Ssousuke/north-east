@@ -1,7 +1,7 @@
-from django.contrib import admin
-from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib import admin
+from django.urls import path, include
 
 urlpatterns = [
     path('login/admin/', admin.site.urls),
@@ -15,3 +15,5 @@ if settings.DEBUG:
 admin.site.site_header = 'Painel de Controle'
 admin.site.index_title = 'Bem-vindo a página de administração!'
 admin.site.site_title = 'Painel de Controle'
+
+handler404 = 'backend.publication.views.error_404'
