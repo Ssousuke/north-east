@@ -46,6 +46,7 @@ class Tag(Base):
 
 class Post(Base):
     title = models.CharField(max_length=100, verbose_name='Título')
+    thumb = models.ImageField(upload_to='posts/thumb', blank=True, verbose_name='Thumb')
     description = models.CharField(
         max_length=330, blank=True, verbose_name='Descrição')
     body = models.TextField(verbose_name='Matéria')

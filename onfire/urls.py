@@ -7,7 +7,8 @@ urlpatterns = [
     path('login/admin/', admin.site.urls),
     path('', include('backend.publication.urls', namespace='publication')),
     path('publications/', include('django_summernote.urls')),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
 
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
