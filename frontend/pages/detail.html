@@ -1,7 +1,9 @@
 {% extends 'base.html' %} {% load humanize %}
 <title>{% block title %} {{detail.title}} {% endblock title %}</title> {% block content %}
 <section class="container mx-auto p-2 m-2">
+    {% if pub.thumb %}
     <img src="{{ detail.thumb.url }}" class="card-img-top border rounded-3 shadow-lg mb-4">
+    {% endif %}
     <h1 class="display-5 fw-bold text-center">{{detail.title|capfirst }}</h1>
     <div class="col-lg-10 mx-auto">
         <p class="text-center">Publicado: {{detail.created_at|naturaltime}} | Atualizado: {{detail.updated_at|naturaltime}}
